@@ -192,3 +192,9 @@ body
   "userId": 사용자_id
 }
 ```
+
+## DB ERD
+
+- MySQL
+
+![ERD](README.assets\db_ERD.png)
