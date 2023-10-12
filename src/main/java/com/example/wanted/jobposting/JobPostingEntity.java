@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
 import com.example.wanted.company.CompanyEntity;
 
 import lombok.AllArgsConstructor;
@@ -26,7 +23,6 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@DynamicInsert @DynamicUpdate
 @Entity(name = "job_posting")
 public class JobPostingEntity {
 
