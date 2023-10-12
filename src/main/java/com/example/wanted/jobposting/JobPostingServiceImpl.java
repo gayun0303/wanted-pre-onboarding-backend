@@ -8,10 +8,12 @@ import com.example.wanted.company.CompanyEntity;
 import com.example.wanted.company.CompanyRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class JobPostingServiceImpl implements JobPostingService {
 	private final JobPostingRepository jobPostingRepository;
 	private final CompanyRepository companyRepository;
@@ -27,5 +29,17 @@ public class JobPostingServiceImpl implements JobPostingService {
 			.techStack(jobPostingDto.getTechStack())
 			.build();
 		jobPostingRepository.save(jobPostingEntity);
+	}
+
+	@Override
+	public JobPostingEntity updateJobPosting(JobPostingUpdateDto jobPostingUpdateDto, Long jobPostingId) throws Exception {
+		JobPostingEntity jobPostingEntity = jobPostingRepository.findById(jobPostingId).orElseThrow(()->new Exception("수정하려는 채용 공고 정보를 찾을 수 없습니다."));
+
+		jobPostingEntity.setPosition(jobPostingUpdateDto.getPosition());
+		jobPostingEntity.setReward(jobPostingUpdateDto.getReward());
+		jobPostingEntity.setContent(jobPostingUpdateDto.getContent());
+		jobPostingEntity.setTechStack(jobPostingUpdateDto.getTechStack());
+
+		return jobPostingRepository.save(jobPostingEntity);
 	}
 }
