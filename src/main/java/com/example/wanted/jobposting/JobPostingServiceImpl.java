@@ -42,4 +42,9 @@ public class JobPostingServiceImpl implements JobPostingService {
 
 		return jobPostingRepository.save(jobPostingEntity);
 	}
+
+	@Override
+	public void deleteJobPosting(Long jobPostingId) throws Exception {
+		jobPostingRepository.deleteByJobPostingId(jobPostingId);
+	}
 }
