@@ -61,7 +61,7 @@ body
 
 ```json
 
-request - PUT http://localhost/job-posting/{companyId}
+request - PUT http://localhost/job-posting/{jobPostingId}
 
 body
 {
@@ -88,10 +88,10 @@ or
 DB에서 삭제됩니다.
 
 ```
-request - DELETE http://localhost/job-posting/{companyId}
+request - DELETE http://localhost/job-posting/{jobPostingId}
 ```
 
-- <code>companyId</code>를 기준으로 삭제됩니다.
+- <code>jobPostingId</code>를 기준으로 삭제됩니다.
 
 ### 4. 채용공고 목록을 가져옵니다.
 
