@@ -14,6 +14,29 @@
 
 ## 요구사항 및 구현 과정
 
+### -. 사용자와 기업의 사전 정보를 등록합니다.
+사용자와 기업의 정보를 등록할 수 있습니다.
+
+```json
+// 사용자 등록
+request - POST http://localhost/user
+
+body
+{
+  "userName":"김이름"
+}
+
+// 기업 등록
+request - POST http://localhost/company
+
+body
+{
+  "companyName":"원티드랩",
+  "country":"한국",
+  "region":"서울"
+}
+```
+
 ### 1. 채용공고를 등록합니다.
 
 ```json
