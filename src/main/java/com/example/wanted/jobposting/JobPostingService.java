@@ -8,5 +8,5 @@ public interface JobPostingService {
 	JobPostingEntity updateJobPosting(JobPostingUpdateDto jobPostingUpdateDto, Long jobPostingId) throws Exception;
 	void deleteJobPosting(Long jobPostingId) throws Exception;
 
-	List<JobPostingDto> getJobPostingList() throws Exception;
+	List<JobPostingSummaryDto> getJobPostingList() throws Exception;
 }

@@ -51,7 +51,7 @@ public class JobPostingServiceImpl implements JobPostingService {
 	}
 
 	@Override
-	public List<JobPostingDto> getJobPostingList() throws Exception {
+	public List<JobPostingSummaryDto> getJobPostingList() throws Exception {
 		return jobPostingRepository.findAllJobPosting();
 	}
 }

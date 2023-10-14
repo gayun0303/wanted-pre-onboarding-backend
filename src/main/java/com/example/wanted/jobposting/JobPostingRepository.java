@@ -10,5 +10,5 @@ public interface JobPostingRepository extends JpaRepository<JobPostingEntity, Lo
 
 	@Query(value = "SELECT jp.job_posting_id AS jobPostingId, c.company_name AS companyName, c.country, c.region, jp.position, jp.reward, jp.tech_stack AS techStack "
 		+ "FROM job_posting AS jp, company AS c;", nativeQuery = true)
-	List<JobPostingDto> findAllJobPosting();
+	List<JobPostingSummaryDto> findAllJobPosting();
 }
