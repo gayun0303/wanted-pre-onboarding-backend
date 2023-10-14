@@ -231,4 +231,4 @@ body
 
 - MySQL
 
-![ERD](README.assets\db_ERD.png)
+![ERD](README.assets/db_ERD.png)
