@@ -59,4 +59,17 @@ public class JobPostingServiceImpl implements JobPostingService {
 	public List<JobPostingSummaryDto> searchJobPostingList(String searchKeyword) throws Exception {
 		return jobPostingRepository.searchJobPosting(searchKeyword);
 	}
+
+	@Override
+	public JobPostingDetailDto getJobPosting(Long jobPostingId) throws Exception {
+		JobPostingEntity jobPostingEntity = jobPostingRepository.findById(jobPostingId)
+			.orElseThrow(()->new Exception("채용 공고 정보를 찾을 수 없습니다."));
+
+		List<Integer> list = jobPostingRepository.findJobPostingIdByCompany_Id(jobPostingEntity.getJobPostingId(), jobPostingEntity.getCompany().getId());
+
+		JobPostingDetailDto jobPostingDetailDto = JobPostingDetailDto.toDetailDto(jobPostingEntity);
+		jobPostingDetailDto.setOtherJobPostingList(list);
+
+		return jobPostingDetailDto;
+	}
 }

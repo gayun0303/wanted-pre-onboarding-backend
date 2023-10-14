@@ -11,4 +11,6 @@ public interface JobPostingService {
 	List<JobPostingSummaryDto> getJobPostingList() throws Exception;
 
 	List<JobPostingSummaryDto> searchJobPostingList(String searchKeyword) throws Exception;
+
+	JobPostingDetailDto getJobPosting(Long jobPostingId) throws Exception;
 }
