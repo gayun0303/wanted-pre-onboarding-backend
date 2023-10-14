@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,20 @@ public class JobPostingController {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			log.error("채용 공고 수정 실패 {}", e.getMessage());
+			result.put("state", "FAIL");
+			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+		}
+	}
+
+	@DeleteMapping("/{jobPostingId}")
+	public ResponseEntity<?> deleteJobPosting(@PathVariable Long jobPostingId) {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			jobPostingService.deleteJobPosting(jobPostingId);
+			result.put("state", "SUCCESS");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("채용 공고 삭제 실패 {}", e.getMessage());
 			result.put("state", "FAIL");
 			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
 		}
