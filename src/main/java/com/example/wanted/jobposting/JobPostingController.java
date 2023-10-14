@@ -94,4 +94,18 @@ public class JobPostingController {
 			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
 		}
 	}
+
+	@GetMapping("/{jobPostingId}")
+	public ResponseEntity<?> getJobPosting(@PathVariable Long jobPostingId) {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			result.put("result", jobPostingService.getJobPosting(jobPostingId));
+			result.put("state", "SUCCESS");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("채용 공고 상세 조회 실패 {}", e.getMessage());
+			result.put("state", "FAIL");
+			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+		}
+	}
 }
