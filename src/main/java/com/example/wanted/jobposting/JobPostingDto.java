@@ -6,6 +6,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class JobPostingDto {
+	private Long jobPostingId;
 	private Long companyId;
 	private String position;
 	private int reward;
