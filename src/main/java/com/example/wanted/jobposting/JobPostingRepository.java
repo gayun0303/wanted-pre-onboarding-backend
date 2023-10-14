@@ -11,4 +11,10 @@ public interface JobPostingRepository extends JpaRepository<JobPostingEntity, Lo
 	@Query(value = "SELECT jp.job_posting_id AS jobPostingId, c.company_name AS companyName, c.country, c.region, jp.position, jp.reward, jp.tech_stack AS techStack "
 		+ "FROM job_posting AS jp, company AS c;", nativeQuery = true)
 	List<JobPostingSummaryDto> findAllJobPosting();
+
+	@Query(value = "SELECT jp.job_posting_id AS jobPostingId, c.company_name AS companyName, c.country, c.region, jp.position, jp.reward, jp.tech_stack as techStack "
+		+ "FROM job_posting AS jp, company AS c "
+		+ "WHERE company_name LIKE %:searchKeyword% OR country LIKE %:searchKeyword% OR region LIKE %:searchKeyword% OR position LIKE %:searchKeyword% OR reward LIKE %:searchKeyword% OR tech_stack LIKE %:searchKeyword%"
+		, nativeQuery = true)
+	List<JobPostingSummaryDto> searchJobPosting(String searchKeyword);
 }
