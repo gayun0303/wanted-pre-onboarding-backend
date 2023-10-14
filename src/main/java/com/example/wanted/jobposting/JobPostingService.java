@@ -9,4 +9,6 @@ public interface JobPostingService {
 	void deleteJobPosting(Long jobPostingId) throws Exception;
 
 	List<JobPostingSummaryDto> getJobPostingList() throws Exception;
+
+	List<JobPostingSummaryDto> searchJobPostingList(String searchKeyword) throws Exception;
 }

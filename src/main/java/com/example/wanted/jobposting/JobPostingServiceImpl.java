@@ -54,4 +54,9 @@ public class JobPostingServiceImpl implements JobPostingService {
 	public List<JobPostingSummaryDto> getJobPostingList() throws Exception {
 		return jobPostingRepository.findAllJobPosting();
 	}
+
+	@Override
+	public List<JobPostingSummaryDto> searchJobPostingList(String searchKeyword) throws Exception {
+		return jobPostingRepository.searchJobPosting(searchKeyword);
+	}
 }
