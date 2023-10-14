@@ -100,8 +100,9 @@ request - DELETE http://localhost/job-posting/{jobPostingId}
 ```json
 
 request - GET http://localhost/job-posting
-[
-	{
+{
+  "result": [
+    {
 	  "jobPostingId": 채용공고_id,
 	  "companyName":"원티드랩",
 	  "country":"한국",
@@ -120,18 +121,21 @@ request - GET http://localhost/job-posting
 	  "techStack":"Django"
 	},
   ...
-]
+  ],
+  "state": "SUCCESS"
+}
 ```
 
 4.2 채용공고 검색 기능 구현 (선택사항)
 
 ```json
 
-request - GET http://localhost/job-posting?search={검색어}
+request - GET http://localhost/job-posting/search?keyword={검색어}
 
 # Example - 1) search=원티드
-[
-	{
+{
+  "result": [
+    {        
 	  "jobPostingId": 채용공고_id,
 	  "companyName":"원티드랩",
 	  "country":"한국",
@@ -148,13 +152,15 @@ request - GET http://localhost/job-posting?search={검색어}
 	  "position":"프론트엔드 개발자",
 	  "reward":500000,
 	  "techStack":"javascript"
-	}
-]
+	}],
+  "state": "SUCCESS"
+}
 
 # Example - 2) search=Django
-[
-	{
-	  "jobPostingId": 채용공고_id,
+{
+  "result": [
+     {
+      "jobPostingId": 채용공고_id,
 	  "companyName":"네이버",
 	  "country":"한국",
 	  "region":"판교",
@@ -172,7 +178,9 @@ request - GET http://localhost/job-posting?search={검색어}
 	  "techStack":"Python"
 	}
   ...
-]
+  ],
+  "state": "SUCCESS"
+}
 ```
 
 ## 5. 채용 상세 페이지를 가져옵니다.
@@ -187,15 +195,18 @@ request - GET http://localhost/job-posting?search={검색어}
 request - GET http://localhost/job-posting/{jopPostingId}
 
 {
-  "jobPostingId": 채용공고_id,
-  "companyName":"원티드랩",
-  "country":"한국",
-  "region":"서울",
-  "position":"백엔드 주니어 개발자",
-  "reward":1500000,
-  "techStack":"Python",
-  "content": "원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..",
-  "otherJobPostingList":[채용공고_id, 채용공고_id, ..] # id List (선택사항 및 가산점요소).
+  "result": {
+        "jobPostingId": 채용공고_id,
+        "companyName":"원티드랩",
+        "country": "한국",
+        "region": "서울",
+        "position": "백엔드 주니어 개발자",
+        "reward": 1500000,
+        "techStack":"Python",
+        "content": "원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..",
+        "otherJobPostingList":[채용공고_id, 채용공고_id, ..] # id List (선택사항 및 가산점요소).
+        },
+  "state":"SUCCESS"
 }
 ```
 
