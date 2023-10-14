@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,6 +46,20 @@ public class JobPostingController {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			log.error("채용 공고 수정 실패 {}", e.getMessage());
+			result.put("state", "FAIL");
+			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+		}
+	}
+
+	@GetMapping("")
+	public ResponseEntity<?> getJobPostingList() {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			result.put("result", jobPostingService.getJobPostingList());
+			result.put("state", "SUCCESS");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("채용 공고 가져오기 실패 {}", e.getMessage());
 			result.put("state", "FAIL");
 			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
 		}
