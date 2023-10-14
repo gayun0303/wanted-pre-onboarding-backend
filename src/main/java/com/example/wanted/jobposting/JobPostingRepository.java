@@ -17,4 +17,7 @@ public interface JobPostingRepository extends JpaRepository<JobPostingEntity, Lo
 		+ "WHERE company_name LIKE %:searchKeyword% OR country LIKE %:searchKeyword% OR region LIKE %:searchKeyword% OR position LIKE %:searchKeyword% OR reward LIKE %:searchKeyword% OR tech_stack LIKE %:searchKeyword%"
 		, nativeQuery = true)
 	List<JobPostingSummaryDto> searchJobPosting(String searchKeyword);
+
+	@Query(value = "SELECT job_posting_id FROM job_posting WHERE NOT job_posting_id = :jobPostingId AND company_id = :companyId", nativeQuery = true)
+	List<Integer> findJobPostingIdByCompany_Id(Long jobPostingId, Long companyId);
 }
