@@ -1,5 +1,7 @@
 package com.example.wanted.jobposting;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -46,5 +48,10 @@ public class JobPostingServiceImpl implements JobPostingService {
 	@Override
 	public void deleteJobPosting(Long jobPostingId) throws Exception {
 		jobPostingRepository.deleteByJobPostingId(jobPostingId);
+	}
+
+	@Override
+	public List<JobPostingDto> getJobPostingList() throws Exception {
+		return jobPostingRepository.findAllJobPosting();
 	}
 }
